@@ -97,14 +97,14 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>KK FUNDA Releases Nexus Repository</name>
-	      <url>http://172.31.40.189:8081/repository/flipkart-release/</url>
+	      <name>Shravan Releases Nexus Repository</name>
+	      <url>http://13.127.166.207:8081/repository/shravan-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>KK FUNDA Snapshot Nexus Repository </name>
-	      <url>http://172.31.40.189:8081/repository/flipkart-snapshot/</url>
+	      <name>Shravan Snapshot Nexus Repository </name>
+	      <url>http://13.127.166.207:8081/repository/shravan-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
