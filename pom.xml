@@ -5,7 +5,7 @@
 	<groupId>com.kk</groupId>
 	<artifactId>maven-web-application-kkfunda</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	
 	<name>maven-web-application</name>
 
@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Shravan Releases Nexus Repository</name>
-	      <url>http://13.127.58.126:8081/repository/shravan-release/</url>
+	      <url>http://13.233.122.77:8081/repository/shravan-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Shravan Snapshot Nexus Repository </name>
-	      <url>http://13.127.58.126:8081/repository/shravan-snapshot/</url>
+	      <url>http://13.233.122.77:8081/repository/shravan-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
