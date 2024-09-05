@@ -27,6 +27,8 @@ pipeline {
         stage('deploy-tomcat') {
             steps {
                 sshagent(['87ff21fd-7f4c-4f3c-9c6c-2681095cd798']) {
+                    sh 'ssh-keygen -R 3.110.224.131'
+                    sh 'ssh-keyscan -H 3.110.224.131 >> /var/lib/jenkins/.ssh/known_hosts'
                     sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.110.224.131:/opt/apache-tomcat-9.0.93/webapps/"
                 }
             }
