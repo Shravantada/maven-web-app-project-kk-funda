@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'maven 3.9.8'
+        maven "maven 3.9.8"
     }
     stages {
         stage('checkout') {
@@ -9,35 +9,36 @@ pipeline {
                 git branch: 'development', credentialsId: '73f708c2-65f4-4bbe-a315-63d249e9cda9', url: 'https://github.com/Shravantada/maven-web-app-project-kk-funda.git'
             }
         }
-        stage('build') {
+        stage('Build') {
             steps {
                 sh "mvn clean package"
             }
         }
-        stage('sonarqube') {
+        stage('Sonarqube report') {
             steps {
                 sh "mvn sonar:sonar"
             }
         }
-        stage('deploy-nexus') {
+        stage('deploynexus') {
             steps {
                 sh "mvn deploy"
             }
         }
-        stage('deploy-tomcat') {
+        stage('deploytomcat') {
             steps {
-                sshagent(['522c3b86-2176-444a-84e2-6d4e9c155f26']) {
-                    sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.110.224.131:/opt/apache-tomcat-9.0.93/webapps/"
+                sshagent(['89dc6853-1723-4891-b1da-8378fa5e566d'])
+                {
+                sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.109.1.57:/opt/apache-tomcat-9.0.93/webapps"
                 }
             }
         }
     }
     post {
-        success {
-            slackSend (color: '#00FF00', message: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+  success {
+    slackSend (color: '#33ff3c', message: "SUCCESS: Job '${env.JOB_NAME} [$env.BUILD_NUMBER}]' (${env.BUILD_URL})",channel: '#shravan_reddy')
         }
         failure {
-            slackSend (color: '#FF0000', message: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+            slackSend (color: '#fff933', message: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})",channel: '#shravan_reddy')
         }
     }
 }
